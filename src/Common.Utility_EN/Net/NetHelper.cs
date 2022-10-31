@@ -319,7 +319,7 @@ namespace HD.Helper.Common
         public static void StartListen(Socket socket, int port)
         {
             //创建本地终结点
-            IPEndPoint localPoint = CreateIPEndPoint(NetHelper.LocalHostName, port);
+            IPEndPoint localPoint = CreateIPEndPoint(LocalHostName, port);
 
             //绑定到本地终结点
             BindEndPoint(socket, localPoint);
@@ -337,7 +337,7 @@ namespace HD.Helper.Common
         public static void StartListen(Socket socket, int port, int maxConnection)
         {
             //创建本地终结点
-            IPEndPoint localPoint = CreateIPEndPoint(NetHelper.LocalHostName, port);
+            IPEndPoint localPoint = CreateIPEndPoint(LocalHostName, port);
 
             //绑定到本地终结点
             BindEndPoint(socket, localPoint);

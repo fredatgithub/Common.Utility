@@ -122,7 +122,7 @@ namespace Utilities
                     break;
             }
 
-            byte[] mybyte = System.Text.Encoding.Default.GetBytes(inputString);
+            byte[] mybyte = Encoding.Default.GetBytes(inputString);
             if (isShowFix && mybyte.Length > len)
                 tempString += "…";
             return tempString;
@@ -235,7 +235,7 @@ namespace Utilities
             if (iTotalSecontds <= System.Int32.MinValue)
                 maxValue = System.Int32.MinValue + 1;
 
-            int i = random.Next(System.Math.Abs(maxValue));
+            int i = random.Next(Math.Abs(maxValue));
 
             return minTime.AddSeconds(i);
         }

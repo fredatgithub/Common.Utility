@@ -41,14 +41,14 @@ namespace Common.Utility.Aliyun.Live
         }
         string Md5Sum(string strToEncrypt)
         {
-            byte[] bs = UTF8Encoding.UTF8.GetBytes(strToEncrypt);
+            byte[] bs = Encoding.UTF8.GetBytes(strToEncrypt);
             return Md5Sum(bs);
         }
         string Md5Sum(byte[] bs)
         {
             // 创建md5 对象  
             System.Security.Cryptography.MD5 md5;
-            md5 = System.Security.Cryptography.MD5CryptoServiceProvider.Create();
+            md5 = System.Security.Cryptography.MD5.Create();
 
             // 生成16位的二进制校验码  
             byte[] hashBytes = md5.ComputeHash(bs);
@@ -57,7 +57,7 @@ namespace Common.Utility.Aliyun.Live
             string hashString = "";
             for (int i = 0; i < hashBytes.Length; i++)
             {
-                hashString += System.Convert.ToString(hashBytes[i], 16).PadLeft(2, '0');
+                hashString += Convert.ToString(hashBytes[i], 16).PadLeft(2, '0');
             }
 
             return hashString.PadLeft(32, '0');

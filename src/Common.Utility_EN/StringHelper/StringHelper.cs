@@ -448,7 +448,7 @@ namespace Common.Utility
                     break;
             }
 
-            byte[] mybyte = System.Text.Encoding.Default.GetBytes(inputString);
+            byte[] mybyte = Encoding.Default.GetBytes(inputString);
             if (isShowFix && mybyte.Length > len)
                 tempString += "…";
             return tempString;

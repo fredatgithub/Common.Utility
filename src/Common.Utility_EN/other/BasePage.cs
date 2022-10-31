@@ -55,7 +55,7 @@ namespace Utilities
         {
             try
             {
-                string style = "";
+                string style = string.Empty;
                 if (obj.Rows.Count > 0)
                 {
                     style = @"<style> .text { mso-number-format:\@; } </script> ";

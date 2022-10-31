@@ -21,7 +21,7 @@ namespace MongoDBHelper
         #region 新增
         public static SafeModeResult InsertOne<T>(string collectionName, T entity)
         {
-            return MongoDBHelper.InsertOne<T>(MongoDBHelper.connectionString_Default, MongoDBHelper.database_Default, collectionName, entity);
+            return InsertOne(connectionString_Default, database_Default, collectionName, entity);
         }
         public static SafeModeResult InsertOne<T>(string connectionString, string databaseName, string collectionName, T entity)
         {
@@ -42,7 +42,7 @@ namespace MongoDBHelper
         }
         public static IEnumerable<SafeModeResult> InsertAll<T>(string collectionName, IEnumerable<T> entitys)
         {
-            return MongoDBHelper.InsertAll<T>(MongoDBHelper.connectionString_Default, MongoDBHelper.database_Default, collectionName, entitys);
+            return InsertAll(connectionString_Default, database_Default, collectionName, entitys);
         }
         public static IEnumerable<SafeModeResult> InsertAll<T>(string connectionString, string databaseName, string collectionName, IEnumerable<T> entitys)
         {
@@ -65,7 +65,7 @@ namespace MongoDBHelper
         #region 修改
         public static SafeModeResult UpdateOne<T>(string collectionName, T entity)
         {
-            return MongoDBHelper.UpdateOne<T>(MongoDBHelper.connectionString_Default, MongoDBHelper.database_Default, collectionName, entity);
+            return UpdateOne(connectionString_Default, database_Default, collectionName, entity);
         }
         public static SafeModeResult UpdateOne<T>(string connectionString, string databaseName, string collectionName, T entity)
         {
@@ -90,7 +90,7 @@ namespace MongoDBHelper
         /// <returns></returns>
         public static SafeModeResult UpdateAll<T>(string collectionName, IMongoQuery query, IMongoUpdate update)
         {
-            return MongoDBHelper.UpdateAll<T>(MongoDBHelper.connectionString_Default, MongoDBHelper.database_Default, collectionName, query, update);
+            return UpdateAll<T>(connectionString_Default, database_Default, collectionName, query, update);
         }
         /// <summary>
         ///
@@ -123,7 +123,7 @@ namespace MongoDBHelper
         #region 删除
         public static SafeModeResult Delete(string collectionName, string _id)
         {
-            return MongoDBHelper.Delete(MongoDBHelper.connectionString_Default, MongoDBHelper.database_Default, collectionName, _id);
+            return Delete(connectionString_Default, database_Default, collectionName, _id);
         }
         public static SafeModeResult Delete(string connectionString, string databaseName, string collectionName, string _id)
         {
@@ -145,7 +145,7 @@ namespace MongoDBHelper
         }
         public static SafeModeResult DeleteAll(string collectionName)
         {
-            return MongoDBHelper.DeleteAll(MongoDBHelper.connectionString_Default, MongoDBHelper.database_Default, collectionName, null);
+            return DeleteAll(connectionString_Default, database_Default, collectionName, null);
         }
         /// <summary>
         ///
@@ -155,7 +155,7 @@ namespace MongoDBHelper
         /// <returns></returns>
         public static SafeModeResult DeleteAll(string collectionName, IMongoQuery query)
         {
-            return MongoDBHelper.DeleteAll(MongoDBHelper.connectionString_Default, MongoDBHelper.database_Default, collectionName, query);
+            return DeleteAll(connectionString_Default, database_Default, collectionName, query);
         }
         /// <summary>
         ///
@@ -189,7 +189,7 @@ namespace MongoDBHelper
         #region 获取单条信息
         public static T GetOne<T>(string collectionName, string _id)
         {
-            return MongoDBHelper.GetOne<T>(MongoDBHelper.connectionString_Default, MongoDBHelper.database_Default, collectionName, _id);
+            return GetOne<T>(connectionString_Default, database_Default, collectionName, _id);
         }
         public static T GetOne<T>(string connectionString, string databaseName, string collectionName, string _id)
         {
@@ -218,7 +218,7 @@ namespace MongoDBHelper
         /// <returns></returns>
         public static T GetOne<T>(string collectionName, IMongoQuery query)
         {
-            return GetOne<T>(MongoDBHelper.connectionString_Default, MongoDBHelper.database_Default, collectionName, query);
+            return GetOne<T>(connectionString_Default, database_Default, collectionName, query);
         }
         /// <summary>
         ///
@@ -253,7 +253,7 @@ namespace MongoDBHelper
         #region 获取多个
         public static List<T> GetAll<T>(string collectionName)
         {
-            return MongoDBHelper.GetAll<T>(MongoDBHelper.connectionString_Default, MongoDBHelper.database_Default, collectionName);
+            return GetAll<T>(connectionString_Default, database_Default, collectionName);
         }
         /// <summary>
         /// 如果不清楚具体的数量，一般不要用这个函数。
@@ -279,7 +279,7 @@ namespace MongoDBHelper
         }
         public static List<T> GetAll<T>(string collectionName, int count)
         {
-            return MongoDBHelper.GetAll<T>(collectionName, count, null, null);
+            return GetAll<T>(collectionName, count, null, null);
         }
         /// <summary>
         ///
@@ -291,7 +291,7 @@ namespace MongoDBHelper
         /// <returns></returns>
         public static List<T> GetAll<T>(string collectionName, int count, IMongoQuery query)
         {
-            return MongoDBHelper.GetAll<T>(collectionName, count, query, null);
+            return GetAll<T>(collectionName, count, query, null);
         }
         /// <summary>
         ///
@@ -303,7 +303,7 @@ namespace MongoDBHelper
         /// <returns></returns>
         public static List<T> GetAll<T>(string collectionName, int count, IMongoSortBy sortBy)
         {
-            return MongoDBHelper.GetAll<T>(collectionName, count, null, sortBy);
+            return GetAll<T>(collectionName, count, null, sortBy);
         }
         /// <summary>
         ///
@@ -320,7 +320,7 @@ namespace MongoDBHelper
             PagerInfo pagerInfo = new PagerInfo();
             pagerInfo.Page = 1;
             pagerInfo.PageSize = count;
-            return MongoDBHelper.GetAll<T>(MongoDBHelper.connectionString_Default, MongoDBHelper.database_Default, collectionName, query, pagerInfo, sortBy, fields);
+            return GetAll<T>(connectionString_Default, database_Default, collectionName, query, pagerInfo, sortBy, fields);
         }
         /// <summary>
         ///
@@ -332,7 +332,7 @@ namespace MongoDBHelper
         /// <returns></returns>
         public static List<T> GetAll<T>(string collectionName, IMongoQuery query, PagerInfo pagerInfo)
         {
-            return MongoDBHelper.GetAll<T>(MongoDBHelper.connectionString_Default, MongoDBHelper.database_Default, collectionName, query, pagerInfo, null);
+            return GetAll<T>(connectionString_Default, database_Default, collectionName, query, pagerInfo, null);
         }
         /// <summary>
         ///
@@ -345,7 +345,7 @@ namespace MongoDBHelper
         /// <returns></returns>
         public static List<T> GetAll<T>(string collectionName, IMongoQuery query, PagerInfo pagerInfo, IMongoSortBy sortBy)
         {
-            return MongoDBHelper.GetAll<T>(MongoDBHelper.connectionString_Default, MongoDBHelper.database_Default, collectionName, query, pagerInfo, sortBy);
+            return GetAll<T>(connectionString_Default, database_Default, collectionName, query, pagerInfo, sortBy);
         }
         /// <summary>
         ///
@@ -358,7 +358,7 @@ namespace MongoDBHelper
         /// <returns></returns>
         public static List<T> GetAll<T>(string collectionName, IMongoQuery query, PagerInfo pagerInfo, params string[] fields)
         {
-            return MongoDBHelper.GetAll<T>(MongoDBHelper.connectionString_Default, MongoDBHelper.database_Default, collectionName, query, pagerInfo, null, fields);
+            return GetAll<T>(connectionString_Default, database_Default, collectionName, query, pagerInfo, null, fields);
         }
         /// <summary>
         ///
@@ -372,7 +372,7 @@ namespace MongoDBHelper
         /// <returns></returns>
         public static List<T> GetAll<T>(string collectionName, IMongoQuery query, PagerInfo pagerInfo, IMongoSortBy sortBy, params string[] fields)
         {
-            return MongoDBHelper.GetAll<T>(MongoDBHelper.connectionString_Default, MongoDBHelper.database_Default, collectionName, query, pagerInfo, sortBy, fields);
+            return GetAll<T>(connectionString_Default, database_Default, collectionName, query, pagerInfo, sortBy, fields);
         }
         /// <summary>
         ///
@@ -423,7 +423,7 @@ namespace MongoDBHelper
         #region 索引
         public static void CreateIndex(string collectionName, params string[] keyNames)
         {
-            MongoDBHelper.CreateIndex(MongoDBHelper.connectionString_Default, MongoDBHelper.database_Default, collectionName, keyNames);
+      CreateIndex(connectionString_Default, database_Default, collectionName, keyNames);
         }
         public static void CreateIndex(string connectionString, string databaseName, string collectionName, params string[] keyNames)
         {

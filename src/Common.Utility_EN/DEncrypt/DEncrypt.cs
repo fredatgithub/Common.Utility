@@ -36,7 +36,7 @@ namespace Common.Utility
         /// <returns>明文</returns>
         public static string Decrypt(string original)
         {
-            return Decrypt(original, "kuiyu.net", System.Text.Encoding.Default);
+            return Decrypt(original, "kuiyu.net", Encoding.Default);
             
         }
 
@@ -52,8 +52,8 @@ namespace Common.Utility
         /// <returns>密文</returns>
         public static string Encrypt(string original, string key)
         {
-            byte[] buff = System.Text.Encoding.Default.GetBytes(original);
-            byte[] kb = System.Text.Encoding.Default.GetBytes(key);
+            byte[] buff = Encoding.Default.GetBytes(original);
+            byte[] kb = Encoding.Default.GetBytes(key);
             return Convert.ToBase64String(Encrypt(buff, kb));
         }
         /// <summary>
@@ -64,7 +64,7 @@ namespace Common.Utility
         /// <returns>明文</returns>
         public static string Decrypt(string original, string key)
         {
-            return Decrypt(original, key, System.Text.Encoding.Default);
+            return Decrypt(original, key, Encoding.Default);
         }
 
         /// <summary>
@@ -77,7 +77,7 @@ namespace Common.Utility
         public static string Decrypt(string encrypted, string key, Encoding encoding)
         {
             byte[] buff = Convert.FromBase64String(encrypted);
-            byte[] kb = System.Text.Encoding.Default.GetBytes(key);
+            byte[] kb = Encoding.Default.GetBytes(key);
             return encoding.GetString(Decrypt(buff, kb));
         }
         #endregion
@@ -91,7 +91,7 @@ namespace Common.Utility
         /// <returns>明文</returns>
         public static byte[] Decrypt(byte[] encrypted)
         {
-            byte[] key = System.Text.Encoding.Default.GetBytes("MATICSOFT");
+            byte[] key = Encoding.Default.GetBytes("MATICSOFT");
             return Decrypt(encrypted, key);
         }
         /// <summary>
@@ -102,7 +102,7 @@ namespace Common.Utility
         /// <returns>密文</returns>
         public static byte[] Encrypt(byte[] original)
         {
-            byte[] key = System.Text.Encoding.Default.GetBytes("MATICSOFT");
+            byte[] key = Encoding.Default.GetBytes("MATICSOFT");
             return Encrypt(original, key);
         }
         #endregion

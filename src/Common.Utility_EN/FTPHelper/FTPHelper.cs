@@ -44,7 +44,7 @@ namespace Common.Utility
         {
             FileInfo fileInf = new FileInfo(filename);
             FtpWebRequest reqFTP;
-            reqFTP = (FtpWebRequest)FtpWebRequest.Create(new Uri(ftpURI + fileInf.Name));
+            reqFTP = (FtpWebRequest)WebRequest.Create(new Uri(ftpURI + fileInf.Name));
             reqFTP.Credentials = new NetworkCredential(ftpUserID, ftpPassword);
             reqFTP.Method = WebRequestMethods.Ftp.UploadFile;
             reqFTP.KeepAlive = false;
@@ -81,7 +81,7 @@ namespace Common.Utility
             {
                 FileStream outputStream = new FileStream(filePath + "\\" + fileName, FileMode.Create);
                 FtpWebRequest reqFTP;
-                reqFTP = (FtpWebRequest)FtpWebRequest.Create(new Uri(ftpURI + fileName));
+                reqFTP = (FtpWebRequest)WebRequest.Create(new Uri(ftpURI + fileName));
                 reqFTP.Credentials = new NetworkCredential(ftpUserID, ftpPassword);
                 reqFTP.Method = WebRequestMethods.Ftp.DownloadFile;
                 reqFTP.UseBinary = true;
@@ -115,7 +115,7 @@ namespace Common.Utility
             try
             {
                 FtpWebRequest reqFTP;
-                reqFTP = (FtpWebRequest)FtpWebRequest.Create(new Uri(ftpURI + fileName));
+                reqFTP = (FtpWebRequest)WebRequest.Create(new Uri(ftpURI + fileName));
                 reqFTP.Credentials = new NetworkCredential(ftpUserID, ftpPassword);
                 reqFTP.Method = WebRequestMethods.Ftp.DeleteFile;
                 reqFTP.KeepAlive = false;
@@ -144,7 +144,7 @@ namespace Common.Utility
             {
                 StringBuilder result = new StringBuilder();
                 FtpWebRequest ftp;
-                ftp = (FtpWebRequest)FtpWebRequest.Create(new Uri(ftpURI));
+                ftp = (FtpWebRequest)WebRequest.Create(new Uri(ftpURI));
                 ftp.Credentials = new NetworkCredential(ftpUserID, ftpPassword);
                 ftp.Method = WebRequestMethods.Ftp.ListDirectoryDetails;
                 WebResponse response = ftp.GetResponse();
@@ -210,7 +210,7 @@ namespace Common.Utility
             FtpWebRequest reqFTP;
             try
             {
-                reqFTP = (FtpWebRequest)FtpWebRequest.Create(new Uri(url));
+                reqFTP = (FtpWebRequest)WebRequest.Create(new Uri(url));
                 reqFTP.UseBinary = true;
                 reqFTP.Credentials = new NetworkCredential(ftpUserID, ftpPassword);
                 reqFTP.Method = WebRequestMethods.Ftp.ListDirectoryDetails;
@@ -263,7 +263,7 @@ namespace Common.Utility
             FtpWebRequest reqFTP;
             try
             {
-                reqFTP = (FtpWebRequest)FtpWebRequest.Create(new Uri(ftpURI + dirName));
+                reqFTP = (FtpWebRequest)WebRequest.Create(new Uri(ftpURI + dirName));
                 reqFTP.Method = WebRequestMethods.Ftp.MakeDirectory;
                 reqFTP.UseBinary = true;
                 reqFTP.Credentials = new NetworkCredential(ftpUserID, ftpPassword);
@@ -285,7 +285,7 @@ namespace Common.Utility
             long fileSize = 0;
             try
             {
-                reqFTP = (FtpWebRequest)FtpWebRequest.Create(new Uri(ftpURI + filename));
+                reqFTP = (FtpWebRequest)WebRequest.Create(new Uri(ftpURI + filename));
                 reqFTP.Method = WebRequestMethods.Ftp.GetFileSize;
                 reqFTP.UseBinary = true;
                 reqFTP.Credentials = new NetworkCredential(ftpUserID, ftpPassword);
@@ -308,7 +308,7 @@ namespace Common.Utility
             FtpWebRequest reqFTP;
             try
             {
-                reqFTP = (FtpWebRequest)FtpWebRequest.Create(new Uri(ftpURI + currentFilename));
+                reqFTP = (FtpWebRequest)WebRequest.Create(new Uri(ftpURI + currentFilename));
                 reqFTP.Method = WebRequestMethods.Ftp.Rename;
                 reqFTP.RenameTo = newFilename;
                 reqFTP.UseBinary = true;

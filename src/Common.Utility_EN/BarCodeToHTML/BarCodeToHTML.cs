@@ -195,8 +195,8 @@ namespace Common.Utility
             }
             result_bin += "101000000000";
 
-            string result_html = ""; //HTML代码
-            string color = "";       //颜色
+            string result_html = string.Empty; //HTML代码
+            string color = string.Empty;       //颜色
             int height_bottom = width * 5;
             foreach (char c in result_bin)
             {
@@ -417,7 +417,7 @@ namespace Common.Utility
 
             s = "*" + s.ToUpper() + "*";
 
-            string result_bin = "";//二进制串
+            string result_bin = string.Empty;//二进制串
 
             try
             {
@@ -429,8 +429,8 @@ namespace Common.Utility
             }
             catch { return "存在不允许的字符！"; }
 
-            string result_html = ""; //HTML代码
-            string color = "";       //颜色
+            string result_html = string.Empty; //HTML代码
+            string color = string.Empty;       //颜色
             foreach (char c in result_bin)
             {
                 color = c == '0' ? "#FFFFFF" : "#000000";
@@ -500,7 +500,7 @@ namespace Common.Utility
             // 000000000101左侧42个01010右侧35个校验7个101000000000
             // 6        101左侧6位 01010右侧5位校验1位101000000000
 
-            string result_bin = "";//二进制串
+            string result_bin = string.Empty;//二进制串
             result_bin += "000000000101";
 
             string type = ean13type(s[0]);
@@ -515,8 +515,8 @@ namespace Common.Utility
             }
             result_bin += "101000000000";
 
-            string result_html = ""; //HTML代码
-            string color = "";       //颜色
+            string result_html = string.Empty; //HTML代码
+            string color = string.Empty;       //颜色
             int height_bottom = width * 5;
             foreach (char c in result_bin)
             {

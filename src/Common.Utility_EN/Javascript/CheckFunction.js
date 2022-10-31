@@ -285,7 +285,7 @@ function CheckName(objName) {
     var regExpInfo = /\W/;
     if (objName.value.replace(".", "").search(regExpInfo) >= 0) {
         alert("输入内容必须为字母，数字或下划线!");
-        objName.value = "";
+        objName.value = string.Empty;
         return false;
     }
     else {

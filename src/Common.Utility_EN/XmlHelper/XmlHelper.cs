@@ -46,7 +46,7 @@ namespace Common.Utility
             //创建一个XML对象
             _xml = new XmlDocument();
 
-            if (DirFile.IsExistFile(_filePath))
+            if (DirFile.DoesFileExist(_filePath))
             {
                 //加载XML文件
                 _xml.Load(this._filePath);

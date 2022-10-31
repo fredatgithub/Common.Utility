@@ -140,10 +140,10 @@ namespace Utilities
                         break;
                     case "content-transfer-encoding":
                         _entity.TransferEncoding = _entity.Headers[key];
-                        _entity.ContentTransferEncoding = MimeReader.GetTransferEncoding(_entity.Headers[key]);
+                        _entity.ContentTransferEncoding = GetTransferEncoding(_entity.Headers[key]);
                         break;
                     case "content-type":
-                        _entity.SetContentType(MimeReader.GetContentType(_entity.Headers[key]));
+                        _entity.SetContentType(GetContentType(_entity.Headers[key]));
                         break;
                     case "mime-version":
                         _entity.MimeVersion = _entity.Headers[key];
@@ -187,15 +187,15 @@ namespace Utilities
         {
             switch (_entity.ContentTransferEncoding)
             {
-                case System.Net.Mime.TransferEncoding.Base64:
+                case TransferEncoding.Base64:
                     _entity.Content = new MemoryStream(Convert.FromBase64String(_entity.EncodedMessage.ToString()), false);
                     break;
 
-                case System.Net.Mime.TransferEncoding.QuotedPrintable:
+                case TransferEncoding.QuotedPrintable:
                     _entity.Content = new MemoryStream(GetBytes(QuotedPrintableEncoding.Decode(_entity.EncodedMessage.ToString())), false);
                     break;
 
-                case System.Net.Mime.TransferEncoding.SevenBit:
+                case TransferEncoding.SevenBit:
                 default:
                     _entity.Content = new MemoryStream(GetBytes(_entity.EncodedMessage.ToString()), false);
                     break;
@@ -386,14 +386,14 @@ namespace Utilities
             {
                 case "7bit":
                 case "8bit":
-                    return System.Net.Mime.TransferEncoding.SevenBit;
+                    return TransferEncoding.SevenBit;
                 case "quoted-printable":
-                    return System.Net.Mime.TransferEncoding.QuotedPrintable;
+                    return TransferEncoding.QuotedPrintable;
                 case "base64":
-                    return System.Net.Mime.TransferEncoding.Base64;
+                    return TransferEncoding.Base64;
                 case "binary":
                 default:
-                    return System.Net.Mime.TransferEncoding.Unknown;
+                    return TransferEncoding.Unknown;
 
             }
         }

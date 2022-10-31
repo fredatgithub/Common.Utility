@@ -54,12 +54,12 @@ namespace Utilities
             Send(SmtpConfig.Create().SmtpSetting.Server, Sender, Recipient, Subject, Body, true, Encoding.UTF8, true, null);
         }
 
-        static readonly string smtpServer = System.Configuration.ConfigurationManager.AppSettings["SmtpServer"];
-        static readonly string userName = System.Configuration.ConfigurationManager.AppSettings["UserName"];
-        static readonly string pwd = System.Configuration.ConfigurationManager.AppSettings["Pwd"];
-        static readonly int smtpPort = Convert.ToInt32(System.Configuration.ConfigurationManager.AppSettings["SmtpPort"]);
-        static readonly string authorName = System.Configuration.ConfigurationManager.AppSettings["AuthorName"];
-        static readonly string to = System.Configuration.ConfigurationManager.AppSettings["To"];
+        static readonly string smtpServer = ConfigurationManager.AppSettings["SmtpServer"];
+        static readonly string userName = ConfigurationManager.AppSettings["UserName"];
+        static readonly string pwd = ConfigurationManager.AppSettings["Pwd"];
+        static readonly int smtpPort = Convert.ToInt32(ConfigurationManager.AppSettings["SmtpPort"]);
+        static readonly string authorName = ConfigurationManager.AppSettings["AuthorName"];
+        static readonly string to = ConfigurationManager.AppSettings["To"];
 
 
         public void Send(string subject, string body)

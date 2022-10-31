@@ -15,7 +15,8 @@ namespace Common.Utilities
     public class EncryptionMD5
     {
         /// <summary>
-        /// 获得一个字符串的加密密文
+        /// 获得一个字符串的加密密文
+
         /// 此密文为单向加密，即不可逆(解密)密文
         /// </summary>
         /// <param name="plainText">待加密明文</param>
@@ -25,20 +26,22 @@ namespace Common.Utilities
             return EncryptStringMD5(plainText);
         }
         /// <summary>
-        /// 获得一个字符串的加密密文
+        /// 获得一个字符串的加密密文
+
         /// 此密文为单向加密，即不可逆(解密)密文
         /// </summary>
         /// <param name="plainText">待加密明文</param>
         /// <returns>已加密密文</returns>
         public static string EncryptStringMD5(string plainText)
         {
-            string encryptText = "";
+            string encryptText = string.Empty;
             if (string.IsNullOrEmpty(plainText)) return encryptText;
             encryptText = FormsAuthentication.HashPasswordForStoringInConfigFile(plainText, "md5");
             return encryptText;
         }
         /// <summary>
-        /// 判断明文与密文是否相符
+        /// 判断明文与密文是否相符
+
         /// </summary>
         /// <param name="plainText">待检查的明文</param>
         /// <param name="encryptText">待检查的密文</param>
@@ -48,7 +51,8 @@ namespace Common.Utilities
             return EqualEncryptStringMD5(plainText, encryptText);
         }
         /// <summary>
-        /// 判断明文与密文是否相符
+        /// 判断明文与密文是否相符
+
         /// </summary>
         /// <param name="plainText">待检查的明文</param>
         /// <param name="encryptText">待检查的密文</param>
@@ -69,7 +73,8 @@ namespace Common.Utilities
     public class EncryptionSHA1
     {
         /// <summary>
-        /// 获得一个字符串的加密密文
+        /// 获得一个字符串的加密密文
+
         /// 此密文为单向加密，即不可逆(解密)密文
         /// </summary>
         /// <param name="plainText">待加密明文</param>
@@ -79,20 +84,22 @@ namespace Common.Utilities
             return EncryptStringSHA1(plainText);
         }
         /// <summary>
-        /// 获得一个字符串的加密密文
+        /// 获得一个字符串的加密密文
+
         /// 此密文为单向加密，即不可逆(解密)密文
         /// </summary>
         /// <param name="plainText">待加密明文</param>
         /// <returns>已加密密文</returns>
         public static string EncryptStringSHA1(string plainText)
         {
-            string encryptText = "";
+            string encryptText = string.Empty;
             if (string.IsNullOrEmpty(plainText)) return encryptText;
             encryptText = FormsAuthentication.HashPasswordForStoringInConfigFile(plainText, "sha1");
             return encryptText;
         }
         /// <summary>
-        /// 判断明文与密文是否相符
+        /// 判断明文与密文是否相符
+
         /// </summary>
         /// <param name="plainText">待检查的明文</param>
         /// <param name="encryptText">待检查的密文</param>
@@ -102,7 +109,8 @@ namespace Common.Utilities
             return EqualEncryptStringSHA1(plainText, encryptText);
         }
         /// <summary>
-        /// 判断明文与密文是否相符
+        /// 判断明文与密文是否相符
+
         /// </summary>
         /// <param name="plainText">待检查的明文</param>
         /// <param name="encryptText">待检查的密文</param>
@@ -123,7 +131,8 @@ namespace Common.Utilities
     public class EncryptionDES
     {
         /// <summary>
-        /// 获得一个字符串的加密密文        /// </summary>
+        /// 获得一个字符串的加密密文
+        /// </summary>
         /// <param name="plainText">明文字符串</param>
         /// <returns>密文字符串</returns>
         public static string EncryptStringReverse(string plainText)
@@ -132,26 +141,29 @@ namespace Common.Utilities
         }
 
         /// <summary>
-        /// 获得一个字符串的加密密文        /// </summary>
+        /// 获得一个字符串的加密密文
+        /// </summary>
         /// <param name="plainText">明文字符串</param>
         /// <param name="key">加密/解密密钥</param>
         /// <returns>密文字符串</returns>
         public static string EncryptStringReverse(string plainText, string key)
         {
-            string result = "";
+            string result = string.Empty;
             if (string.IsNullOrEmpty(plainText)) return result;
 
             try
             {
-                //如无，取默认值
+                //如无，取默认值
+
                 string keyStr = string.IsNullOrEmpty(key) ? VariableName.DefaultEncryptKey : key;
 
                 //明文
                 //byte[] srcData = System.Text.ASCIIEncoding.ASCII.GetBytes(plainText);
-                byte[] srcData = UnicodeEncoding.Unicode.GetBytes(plainText);
+                byte[] srcData = Encoding.Unicode.GetBytes(plainText);
 
                 MemoryStream sin = new MemoryStream();
-                //将明文写入内存
+                //将明文写入内存
+
                 sin.Write(srcData, 0, srcData.Length);
                 sin.Position = 0;
 
@@ -182,28 +194,32 @@ namespace Common.Utilities
                     sTemp = keyStr;
 
                 //设置密钥
-                des.Key = ASCIIEncoding.ASCII.GetBytes(sTemp);
+                des.Key = Encoding.ASCII.GetBytes(sTemp);
 
 
-                //设置初始化向量
+                //设置初始化向量
+
                 if (keyStr.Length > des.IV.Length)
                 {
-                    des.IV = ASCIIEncoding.ASCII.GetBytes(keyStr.Substring(0, des.IV.Length));
+                    des.IV = Encoding.ASCII.GetBytes(keyStr.Substring(0, des.IV.Length));
                 }
                 else
                 {
-                    des.IV = ASCIIEncoding.ASCII.GetBytes(keyStr.PadRight(des.IV.Length, ' '));
+                    des.IV = Encoding.ASCII.GetBytes(keyStr.PadRight(des.IV.Length, ' '));
                 }
 
-                //加密流
+                //加密流
+
                 CryptoStream encStream = new CryptoStream(sout, des.CreateEncryptor(), CryptoStreamMode.Write);
 
-                //明文流程的长度
+                //明文流程的长度
+
                 long lLen = sin.Length;
                 //已经读取长度
                 int nReadTotal = 0;
 
-                //读入块
+                //读入块
+
                 byte[] buf = new byte[8];
 
                 int nRead;
@@ -218,7 +234,7 @@ namespace Common.Utilities
                 encStream.Close();
 
                 //密文
-                result = System.Convert.ToBase64String(sout.ToArray());
+                result = Convert.ToBase64String(sout.ToArray());
             }
             catch { }
 
@@ -226,7 +242,8 @@ namespace Common.Utilities
         }
 
         /// <summary>
-        /// 对加密密文进行解密
+        /// 对加密密文进行解密
+
         /// </summary>
         /// <param name="encryptText">待解密的密文</param>
         /// <returns>明文字符串</returns>
@@ -236,25 +253,28 @@ namespace Common.Utilities
         }
 
         /// <summary>
-        /// 对加密密文进行解密
+        /// 对加密密文进行解密
+
         /// </summary>
         /// <param name="encryptText">待解密的密文</param>
         /// <param name="key">密钥</param>
         /// <returns>明文字符串</returns>
         public static string DecryptStringReverse(string encryptText, string key)
         {
-            string result = "";
+            string result = string.Empty;
             if (string.IsNullOrEmpty(encryptText)) return result;
 
             try
             {
-                //如无，取默认值
+                //如无，取默认值
+
                 string keyStr = string.IsNullOrEmpty(key) ? VariableName.DefaultEncryptKey : key;
 
                 //密文
-                byte[] encData = System.Convert.FromBase64String(encryptText);
+                byte[] encData = Convert.FromBase64String(encryptText);
 
-                //将密文写入内存
+                //将密文写入内存
+
                 MemoryStream sin = new MemoryStream(encData);
 
                 MemoryStream sout = new MemoryStream();
@@ -284,20 +304,22 @@ namespace Common.Utilities
                     sTemp = keyStr;
 
                 //设置密钥
-                des.Key = ASCIIEncoding.ASCII.GetBytes(sTemp);
+                des.Key = Encoding.ASCII.GetBytes(sTemp);
 
 
-                //设置初始化向量
+                //设置初始化向量
+
                 if (keyStr.Length > des.IV.Length)
                 {
-                    des.IV = ASCIIEncoding.ASCII.GetBytes(keyStr.Substring(0, des.IV.Length));
+                    des.IV = Encoding.ASCII.GetBytes(keyStr.Substring(0, des.IV.Length));
                 }
                 else
                 {
-                    des.IV = ASCIIEncoding.ASCII.GetBytes(keyStr.PadRight(des.IV.Length, ' '));
+                    des.IV = Encoding.ASCII.GetBytes(keyStr.PadRight(des.IV.Length, ' '));
                 }
 
-                //解密流
+                //解密流
+
                 CryptoStream decStream = new CryptoStream(sin, des.CreateDecryptor(), CryptoStreamMode.Read);
 
                 //密文流的长度
@@ -305,7 +327,8 @@ namespace Common.Utilities
                 //已经读取长度
                 int nReadTotal = 0;
 
-                //读入块
+                //读入块
+
                 byte[] buf = new byte[8];
 
                 int nRead;

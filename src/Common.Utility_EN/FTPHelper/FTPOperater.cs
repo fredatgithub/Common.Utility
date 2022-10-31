@@ -126,8 +126,8 @@ namespace Common.Utility
         /// <param name="localFileName">本地文件名</param>
         public bool AddMSCFile(string ftpFolder, string ftpFileName, string localFolder, string localFileName, string BscInfo)
         {
-            string sLine = "";
-            string sResult = "";
+            string sLine = string.Empty;
+            string sResult = string.Empty;
             string path = "获得应用程序所在的完整的路径";
             path = path.Substring(0, path.LastIndexOf("\\"));
             try
@@ -252,7 +252,7 @@ namespace Common.Utility
         /// <param name="ftpFileName">ftp文件名</param>
         public string GetFileInfo(string ftpFolder, string ftpFileName)
         {
-            string strResult = "";
+            string strResult = string.Empty;
             try
             {
                 if (ftp == null) ftp = this.getFtpClient();
@@ -293,7 +293,7 @@ namespace Common.Utility
         /// <param name="ftpFileName">ftp文件名</param>
         public string GetFileInfoConnected(string ftpFolder, string ftpFileName)
         {
-            string strResult = "";
+            string strResult = string.Empty;
             try
             {
                 if (ftp == null) ftp = this.getFtpClient();

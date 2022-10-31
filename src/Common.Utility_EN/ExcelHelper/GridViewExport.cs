@@ -123,7 +123,7 @@ namespace Common.Utility
         {
             Page page = (Page)HttpContext.Current.Handler;
             page.Response.Clear();
-            string fileName = System.Web.HttpUtility.UrlEncode(System.Text.Encoding.UTF8.GetBytes(excelFileName));
+            string fileName = HttpUtility.UrlEncode(Encoding.UTF8.GetBytes(excelFileName));
             page.Response.AddHeader("Content-Disposition", "attachment:filename=" + fileName + ".xls");
             page.Response.ContentType = "application/vnd.ms-excel";
             page.Response.Charset = "utf-8";
@@ -161,7 +161,7 @@ namespace Common.Utility
             s.Append("</table>");
             s.Append("</body></html>");
 
-            page.Response.BinaryWrite(System.Text.Encoding.GetEncoding("utf-8").GetBytes(s.ToString()));
+            page.Response.BinaryWrite(Encoding.GetEncoding("utf-8").GetBytes(s.ToString()));
             page.Response.End();
         }
 

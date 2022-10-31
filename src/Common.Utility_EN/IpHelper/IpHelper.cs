@@ -21,10 +21,10 @@ namespace Utilities
             string ip;
             string[] temp;
             bool isErr = false;
-            if (System.Web.HttpContext.Current.Request.ServerVariables["HTTP_X_ForWARDED_For"] == null)
-                ip = System.Web.HttpContext.Current.Request.ServerVariables["REMOTE_ADDR"].ToString();
+            if (HttpContext.Current.Request.ServerVariables["HTTP_X_ForWARDED_For"] == null)
+                ip = HttpContext.Current.Request.ServerVariables["REMOTE_ADDR"].ToString();
             else
-                ip = System.Web.HttpContext.Current.Request.ServerVariables["HTTP_X_ForWARDED_For"].ToString();
+                ip = HttpContext.Current.Request.ServerVariables["HTTP_X_ForWARDED_For"].ToString();
             if (ip.Length > 15)
                 isErr = true;
             else
@@ -80,7 +80,7 @@ namespace Utilities
         /// <returns></returns>
         public static string GetCurrentFullHost()
         {
-            HttpRequest request = System.Web.HttpContext.Current.Request;
+            HttpRequest request = HttpContext.Current.Request;
             if (!request.Url.IsDefaultPort)
                 return string.Format("{0}:{1}", request.Url.Host, request.Url.Port.ToString());
 

@@ -150,7 +150,7 @@ namespace HD.DBHelper
                     {
                         connection.Open();
                         object obj = cmd.ExecuteScalar();
-                        if ((Object.Equals(obj, null)) || (Object.Equals(obj, System.DBNull.Value)))
+                        if ((Equals(obj, null)) || (Equals(obj, DBNull.Value)))
                         {
                             return null;
                         }
@@ -176,9 +176,9 @@ namespace HD.DBHelper
 
         public static bool Exists(string connectionString,string strOracle)
         {
-            object obj = OracleHelper.GetSingle(connectionString,strOracle);
+            object obj = GetSingle(connectionString,strOracle);
             int cmdresult;
-            if ((Object.Equals(obj, null)) || (Object.Equals(obj, System.DBNull.Value)))
+            if ((Equals(obj, null)) || (Equals(obj, DBNull.Value)))
             {
                 cmdresult = 0;
             }

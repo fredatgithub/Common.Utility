@@ -93,7 +93,7 @@ namespace Utilities
             try
             {
                 byte[] byteRequest = Encoding.Default.GetBytes(postData);
-                httpWebRequest = (HttpWebRequest)HttpWebRequest.Create(url);
+                httpWebRequest = (HttpWebRequest)WebRequest.Create(url);
                 httpWebRequest.CookieContainer = cookieContainer;
                 httpWebRequest.ContentType = contentType;
                 httpWebRequest.ServicePoint.ConnectionLimit = maxTry;
@@ -139,7 +139,7 @@ namespace Utilities
             HttpWebResponse httpWebResponse = null;
             try
             {
-                httpWebRequest = (HttpWebRequest)HttpWebRequest.Create(url);
+                httpWebRequest = (HttpWebRequest)WebRequest.Create(url);
                 httpWebRequest.CookieContainer = cookieContainer;
                 httpWebRequest.ContentType = contentType;
                 httpWebRequest.ServicePoint.ConnectionLimit = maxTry;
@@ -190,7 +190,7 @@ namespace Utilities
 
             try
             {
-                httpWebRequest = (HttpWebRequest)HttpWebRequest.Create(url);
+                httpWebRequest = (HttpWebRequest)WebRequest.Create(url);
                 httpWebRequest.CookieContainer = cookieContainer;
                 httpWebRequest.ContentType = contentType;
                 httpWebRequest.ServicePoint.ConnectionLimit = maxTry;
@@ -316,7 +316,7 @@ namespace Utilities
         /// <param name="imgHttp">要补充的http://路径信息</param>
         public static string GetImgSrc(string HtmlCode, string imgHttp)
         {
-            string MatchVale = "";
+            string MatchVale = string.Empty;
             string Reg = @"<img.+?>";
             foreach (Match m in Regex.Matches(HtmlCode.ToLower(), Reg))
             {
@@ -332,7 +332,7 @@ namespace Utilities
         /// <param name="ImgString"><img src="" />字符串</param>
         public static string GetImg(string ImgString, string imgHttp)
         {
-            string MatchVale = "";
+            string MatchVale = string.Empty;
             string Reg = @"src=.+\.(bmp|jpg|gif|png|)";
             foreach (Match m in Regex.Matches(ImgString.ToLower(), Reg))
             {
@@ -354,7 +354,7 @@ namespace Utilities
             string strResult;
             try
             {
-                HttpWebRequest hwr = (HttpWebRequest)HttpWebRequest.Create(tUrl);
+                HttpWebRequest hwr = (HttpWebRequest)WebRequest.Create(tUrl);
                 hwr.Timeout = 19600;
                 HttpWebResponse hwrs = (HttpWebResponse)hwr.GetResponse();
                 Stream myStream = hwrs.GetResponseStream();
@@ -425,7 +425,7 @@ namespace Utilities
         /// <param name="html_Str">a img p div</param>
         public static string DelHtml(string s_TextStr, string html_Str)
         {
-            string rStr = "";
+            string rStr = string.Empty;
             if (!string.IsNullOrEmpty(s_TextStr))
             {
                 rStr = Regex.Replace(s_TextStr, "<" + html_Str + "[^>]*>", "", RegexOptions.IgnoreCase);
@@ -473,7 +473,7 @@ namespace Utilities
         /// <param name="url">指定要跳转的页面地址</param>
         public static void alert(string str, string url)
         {
-            System.Web.HttpContext.Current.Response.Write("<script language='javascript'>alert('" + str + "');location.href=" + url + "</script>");
+      HttpContext.Current.Response.Write("<script language='javascript'>alert('" + str + "');location.href=" + url + "</script>");
         }
         /// <summary>
         /// 弹出信息 无跳转动作
@@ -481,14 +481,14 @@ namespace Utilities
         /// <param name="str">信息内容</param>
         public static void erro(string str)
         {
-            System.Web.HttpContext.Current.Response.Write("<script language='javascript'>alert('" + str + "');</script>");
+      HttpContext.Current.Response.Write("<script language='javascript'>alert('" + str + "');</script>");
         }
         /// <summary>
         /// 后退一页
         /// </summary>
         public static void goback()
         {
-            System.Web.HttpContext.Current.Response.Write("<script language='javascript'>history.go(-1);</script>");
+      HttpContext.Current.Response.Write("<script language='javascript'>history.go(-1);</script>");
         }
         /// <summary>
         /// 执行js命令
@@ -496,7 +496,7 @@ namespace Utilities
         /// <param name="function">传入要执行的js函数[包含参数的函数]</param>
         public static void DoJsFunction(string function)
         {
-            System.Web.HttpContext.Current.Response.Write("<script language='javascript'>" + function + "</script>");
+      HttpContext.Current.Response.Write("<script language='javascript'>" + function + "</script>");
         }
         #endregion
 

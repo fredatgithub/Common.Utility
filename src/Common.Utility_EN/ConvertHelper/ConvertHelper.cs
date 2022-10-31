@@ -19,7 +19,7 @@ namespace Common.Utility
         public static string RepairZero(string text, int limitedLength)
         {
             //补足0的字符串
-            string temp = "";
+            string temp = string.Empty;
 
             //补足0
             for (int i = 0; i < limitedLength - text.Length; i++)

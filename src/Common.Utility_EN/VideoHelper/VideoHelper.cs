@@ -170,13 +170,13 @@ namespace HD.Helper.Common
         /// <returns>³É¹¦:·µ»ØÍ¼Æ¬ÐéÄâµØÖ·;Ê§°Ü:·µ»Ø¿Õ×Ö·û´®</returns>
         public string ChangeFilePhy(string fileName, string playFile, string imgFile)
         {
-            string ffmpeg = Server.MapPath(VideoHelper.ffmpegtool);
+            string ffmpeg = Server.MapPath(ffmpegtool);
             if ((!System.IO.File.Exists(ffmpeg)) || (!System.IO.File.Exists(fileName)))
             {
                 return "";
             }
             string flv_file = System.IO.Path.ChangeExtension(playFile, ".flv");
-            string FlvImgSize = VideoHelper.sizeOfImg;
+            string FlvImgSize = sizeOfImg;
             System.Diagnostics.ProcessStartInfo FilestartInfo = new System.Diagnostics.ProcessStartInfo(ffmpeg);
             FilestartInfo.WindowStyle = System.Diagnostics.ProcessWindowStyle.Hidden;
             FilestartInfo.Arguments = " -i " + fileName + " -ab 56 -ar 22050 -b 500 -r 15 -s " + widthOfFile + "x" + heightOfFile + " " + flv_file;
@@ -194,9 +194,9 @@ namespace HD.Helper.Common
 
         public string CatchImg(string fileName, string imgFile)
         {
-            string ffmpeg = Server.MapPath(VideoHelper.ffmpegtool);
+            string ffmpeg = Server.MapPath(ffmpegtool);
             string flv_img = imgFile + ".jpg";
-            string FlvImgSize = VideoHelper.sizeOfImg;
+            string FlvImgSize = sizeOfImg;
             System.Diagnostics.ProcessStartInfo ImgstartInfo = new System.Diagnostics.ProcessStartInfo(ffmpeg);
             ImgstartInfo.WindowStyle = System.Diagnostics.ProcessWindowStyle.Hidden;
             ImgstartInfo.Arguments = "   -i   " + fileName + "  -y  -f  image2   -ss 2 -vframes 1  -s   " + FlvImgSize + "   " + flv_img;
@@ -226,14 +226,14 @@ namespace HD.Helper.Common
         /// <returns>³É¹¦:·µ»ØÍ¼Æ¬ÐéÄâµØÖ·;Ê§°Ü:·µ»Ø¿Õ×Ö·û´®</returns>
         public string ChangeFileVir(string fileName, string playFile, string imgFile)
         {
-            string ffmpeg = Server.MapPath(VideoHelper.ffmpegtool);
+            string ffmpeg = Server.MapPath(ffmpegtool);
             if ((!System.IO.File.Exists(ffmpeg)) || (!System.IO.File.Exists(fileName)))
             {
                 return "";
             }
             string flv_img = System.IO.Path.ChangeExtension(Server.MapPath(imgFile), ".jpg");
             string flv_file = System.IO.Path.ChangeExtension(Server.MapPath(playFile), ".flv");
-            string FlvImgSize = VideoHelper.sizeOfImg;
+            string FlvImgSize = sizeOfImg;
 
             System.Diagnostics.ProcessStartInfo ImgstartInfo = new System.Diagnostics.ProcessStartInfo(ffmpeg);
             ImgstartInfo.WindowStyle = System.Diagnostics.ProcessWindowStyle.Hidden;
@@ -268,13 +268,13 @@ namespace HD.Helper.Common
         /// </summary>
         public string MChangeFilePhy(string vFileName, string playFile, string imgFile)
         {
-            string tool = Server.MapPath(VideoHelper.mencodertool);
+            string tool = Server.MapPath(mencodertool);
             if ((!System.IO.File.Exists(tool)) || (!System.IO.File.Exists(vFileName)))
             {
                 return "";
             }
             string flv_file = System.IO.Path.ChangeExtension(playFile, ".flv");
-            string FlvImgSize = VideoHelper.sizeOfImg;
+            string FlvImgSize = sizeOfImg;
             System.Diagnostics.ProcessStartInfo FilestartInfo = new System.Diagnostics.ProcessStartInfo(tool);
             FilestartInfo.WindowStyle = System.Diagnostics.ProcessWindowStyle.Hidden;
             FilestartInfo.Arguments = " " + vFileName + " -o " + flv_file + " -of lavf -lavfopts i_certify_that_my_video_stream_does_not_use_b_frames -oac mp3lame -lameopts abr:br=56 -ovc lavc -lavcopts vcodec=flv:vbitrate=200:mbd=2:mv0:trell:v4mv:cbp:last_pred=1:dia=-1:cmp=0:vb_strategy=1 -vf scale=" + widthOfFile + ":" + heightOfFile + " -ofps 12 -srate 22050";

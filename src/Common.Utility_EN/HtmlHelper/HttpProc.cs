@@ -70,7 +70,7 @@ namespace Utilities
     public class WebClient
     {
         Encoding encoding = Encoding.Default;
-        string respHtml = "";
+        string respHtml = string.Empty;
         WebProxy proxy;
         static CookieContainer cc;
         WebHeaderCollection requestHeaders;
@@ -353,7 +353,7 @@ namespace Utilities
         /// </summary>    
         private static void SaveCookiesToDisk()
         {
-            string cookieFile = System.Environment.GetFolderPath(Environment.SpecialFolder.Cookies) + "\\webclient.cookie";
+            string cookieFile = Environment.GetFolderPath(Environment.SpecialFolder.Cookies) + "\\webclient.cookie";
             FileStream fs = null;
             try
             {
@@ -372,7 +372,7 @@ namespace Utilities
         private static void LoadCookiesFromDisk()
         {
             cc = new CookieContainer();
-            string cookieFile = System.Environment.GetFolderPath(Environment.SpecialFolder.Cookies) + "\\webclient.cookie";
+            string cookieFile = Environment.GetFolderPath(Environment.SpecialFolder.Cookies) + "\\webclient.cookie";
             if (!File.Exists(cookieFile))
                 return;
             FileStream fs = null;

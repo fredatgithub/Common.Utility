@@ -79,7 +79,7 @@ namespace Common.Utility
         /// <param name="imagePath">保存的文件路径</param>
         public string FileSc(FileUpload PosPhotoUpload, string saveFileName, string imagePath)
         {
-            string state = "";
+            string state = string.Empty;
             if (PosPhotoUpload.HasFile)
             {
                 if (PosPhotoUpload.PostedFile.ContentLength / 1024 < 10240)
@@ -87,7 +87,7 @@ namespace Common.Utility
                     string MimeType = PosPhotoUpload.PostedFile.ContentType;
                     if (String.Equals(MimeType, "image/gif") || String.Equals(MimeType, "image/pjpeg"))
                     {
-                        string extFileString = System.IO.Path.GetExtension(PosPhotoUpload.PostedFile.FileName);
+                        string extFileString = Path.GetExtension(PosPhotoUpload.PostedFile.FileName);
                         PosPhotoUpload.PostedFile.SaveAs(HttpContext.Current.Server.MapPath(imagePath));
                     }
                     else

@@ -118,7 +118,7 @@ namespace Common.Utility
         /// <returns>返回一个表集合(DataTableCollection)表示查询得到的数据集</returns>
         public static DataTableCollection GetTable(CommandType cmdTye, string cmdText, SqlParameter[] commandParameters)
         {
-            return GetTable(SqlHelper.connectionString, cmdTye, cmdText, commandParameters);
+            return GetTable(connectionString, cmdTye, cmdText, commandParameters);
         }
 
         /// <summary>
@@ -305,7 +305,7 @@ namespace Common.Utility
         /// <returns>返回一个对象</returns>
         public static object ExecuteScalar(CommandType cmdType, string cmdText, params SqlParameter[] commandParameters)
         {
-            return ExecuteScalar(SqlHelper.connectionString, cmdType, cmdText, commandParameters);
+            return ExecuteScalar(connectionString, cmdType, cmdText, commandParameters);
         }
 
         /// <summary>
@@ -316,7 +316,7 @@ namespace Common.Utility
         /// <returns>返回一个对象</returns>
         public static object ExecuteScalarProducts(string cmdText, params SqlParameter[] commandParameters)
         {
-            return ExecuteScalar(SqlHelper.connectionString, CommandType.StoredProcedure, cmdText, commandParameters);
+            return ExecuteScalar(connectionString, CommandType.StoredProcedure, cmdText, commandParameters);
         }
 
         /// <summary>
@@ -327,7 +327,7 @@ namespace Common.Utility
         /// <returns>返回一个对象</returns>
         public static object ExecuteScalarText(string cmdText, params SqlParameter[] commandParameters)
         {
-            return ExecuteScalar(SqlHelper.connectionString, CommandType.Text, cmdText, commandParameters);
+            return ExecuteScalar(connectionString, CommandType.Text, cmdText, commandParameters);
         }
 
         /// <summary>

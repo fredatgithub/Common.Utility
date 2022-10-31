@@ -35,7 +35,7 @@ namespace Common.Utility
 
             for (int i = 0; i < hz.Length; i++)
             {
-                array = System.Text.Encoding.Default.GetBytes(hz[i].ToString());
+                array = Encoding.Default.GetBytes(hz[i].ToString());
 
                 //非汉字
                 if (array[0] < 176)

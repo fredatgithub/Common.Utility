@@ -51,7 +51,7 @@ namespace Common.Utility
             }
             else
             {
-                str = "";
+                str = string.Empty;
             }
 
 
@@ -100,13 +100,13 @@ namespace Common.Utility
         public static void WriteFile(string Path, string Strings)
         {
 
-            if (!System.IO.File.Exists(Path))
+            if (!File.Exists(Path))
             {
-                System.IO.FileStream f = System.IO.File.Create(Path);
+                System.IO.FileStream f = File.Create(Path);
                 f.Close();
                 f.Dispose();
             }
-            System.IO.StreamWriter f2 = new System.IO.StreamWriter(Path, true, System.Text.Encoding.UTF8);
+            System.IO.StreamWriter f2 = new System.IO.StreamWriter(Path, true, Encoding.UTF8);
             f2.WriteLine(Strings);
             f2.Close();
             f2.Dispose();
@@ -131,12 +131,12 @@ namespace Common.Utility
         /// <returns></returns>
         public static string ReadFile(string Path)
         {
-            string s = "";
-            if (!System.IO.File.Exists(Path))
+            string s = string.Empty;
+            if (!File.Exists(Path))
                 s = "不存在相应的目录";
             else
             {
-                StreamReader f2 = new StreamReader(Path, System.Text.Encoding.GetEncoding("gb2312"));
+                StreamReader f2 = new StreamReader(Path, Encoding.GetEncoding("gb2312"));
                 s = f2.ReadToEnd();
                 f2.Close();
                 f2.Dispose();
@@ -374,7 +374,7 @@ namespace Common.Utility
         public static string GetFoldAll(string Path)
         {
 
-            string str = "";
+            string str = string.Empty;
             DirectoryInfo thisOne = new DirectoryInfo(Path);
             str = ListTreeShow(thisOne, 0, str);
             return str;
@@ -400,7 +400,7 @@ namespace Common.Utility
                 }
                 else
                 {
-                    string _s = "";
+                    string _s = string.Empty;
                     for (int i = 1; i <= nLevel; i++)
                     {
                         _s += "│&nbsp;";
@@ -417,7 +417,7 @@ namespace Common.Utility
                     }
                     else
                     {
-                        string _f = "";
+                        string _f = string.Empty;
                         for (int i = 1; i <= nLevel; i++)
                         {
                             _f += "│&nbsp;";
@@ -452,7 +452,7 @@ namespace Common.Utility
         public static string GetFoldAll(string Path, string DropName, string tplPath)
         {
             string strDrop = "<select name=\"" + DropName + "\" id=\"" + DropName + "\"><option value=\"\">--请选择详细模板--</option>";
-            string str = "";
+            string str = string.Empty;
             DirectoryInfo thisOne = new DirectoryInfo(Path);
             str = ListTreeShow(thisOne, 0, str, tplPath);
             return strDrop + str + "</select>";
@@ -487,7 +487,7 @@ namespace Common.Utility
                 }
                 else
                 {
-                    string _s = "";
+                    string _s = string.Empty;
                     for (int i = 1; i <= nLevel; i++)
                     {
                         _s += "│&nbsp;";
@@ -513,7 +513,7 @@ namespace Common.Utility
                     }
                     else
                     {
-                        string _f = "";
+                        string _f = string.Empty;
                         for (int i = 1; i <= nLevel; i++)
                         {
                             _f += "│&nbsp;";
@@ -582,7 +582,7 @@ namespace Common.Utility
         /// <returns></returns>
         public static string GetFileAttibe(string filePath)
         {
-            string str = "";
+            string str = string.Empty;
             System.IO.FileInfo objFI = new System.IO.FileInfo(filePath);
             str += "详细路径:" + objFI.FullName + "<br>文件名称:" + objFI.Name + "<br>文件长度:" + objFI.Length.ToString() + "字节<br>创建时间" + objFI.CreationTime.ToString() + "<br>最后访问时间:" + objFI.LastAccessTime.ToString() + "<br>修改时间:" + objFI.LastWriteTime.ToString() + "<br>所在目录:" + objFI.DirectoryName + "<br>扩展名:" + objFI.Extension;
             return str;

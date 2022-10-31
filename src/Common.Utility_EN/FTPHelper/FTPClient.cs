@@ -21,10 +21,10 @@ namespace Common.Utility
         /// </summary>
         public FTPClient()
         {
-            strRemoteHost = "";
-            strRemotePath = "";
-            strRemoteUser = "";
-            strRemotePass = "";
+            strRemoteHost = string.Empty;
+            strRemotePath = string.Empty;
+            strRemoteUser = string.Empty;
+            strRemotePass = string.Empty;
             strRemotePort = 21;
             bConnected = false;
         }
@@ -279,7 +279,7 @@ namespace Common.Utility
             {
                 throw new IOException(strReply.Substring(4));
             }
-            strMsg = "";
+            strMsg = string.Empty;
             Thread.Sleep(2000);
             while (true)
             {
@@ -380,7 +380,7 @@ namespace Common.Utility
             }
             Socket socketData = CreateDataSocket();
             SendCommand("LIST " + strFileName);
-            string strResult = "";
+            string strResult = string.Empty;
             if (!(iReplyCode == 150 || iReplyCode == 125
                 || iReplyCode == 226 || iReplyCode == 250))
             {
@@ -400,7 +400,7 @@ namespace Common.Utility
                 }
             }
             byte[] bt = ms.GetBuffer();
-            strResult = System.Text.Encoding.ASCII.GetString(bt);
+            strResult = Encoding.ASCII.GetString(bt);
             ms.Close();
             return strResult;
         }
@@ -646,15 +646,15 @@ namespace Common.Utility
             string str = strFileName.Substring(0, strFileName.LastIndexOf("\\"));
             string strTypeName = strFileName.Substring(strFileName.LastIndexOf("."));
             strGuid = str + "\\" + strGuid;
-            System.IO.File.Copy(strFileName, strGuid);
-            System.IO.File.SetAttributes(strGuid, System.IO.FileAttributes.Normal);
+      File.Copy(strFileName, strGuid);
+      File.SetAttributes(strGuid, FileAttributes.Normal);
             Socket socketData = CreateDataSocket();
             SendCommand("STOR " + Path.GetFileName(strGuid));
             if (!(iReplyCode == 125 || iReplyCode == 150))
             {
                 throw new IOException(strReply.Substring(4));
             }
-            FileStream input = new FileStream(strGuid, FileMode.Open, System.IO.FileAccess.Read, System.IO.FileShare.Read);
+            FileStream input = new FileStream(strGuid, FileMode.Open, FileAccess.Read, FileShare.Read);
             int iBytes = 0;
             while ((iBytes = input.Read(buffer, 0, buffer.Length)) > 0)
             {
@@ -741,7 +741,7 @@ namespace Common.Utility
         /// </summary>
         private void ReadReply()
         {
-            strMsg = "";
+            strMsg = string.Empty;
             strReply = ReadLine();
             iReplyCode = Int32.Parse(strReply.Substring(0, 3));
         }
@@ -763,7 +763,7 @@ namespace Common.Utility
             int[] parts = new int[6];
             int len = ipData.Length;
             int partCount = 0;
-            string buf = "";
+            string buf = string.Empty;
             for (int i = 0; i < len && partCount <= 6; i++)
             {
                 char ch = Char.Parse(ipData.Substring(i, 1));
@@ -778,7 +778,7 @@ namespace Common.Utility
                     try
                     {
                         parts[partCount++] = Int32.Parse(buf);
-                        buf = "";
+                        buf = string.Empty;
                     }
                     catch (Exception)
                     {

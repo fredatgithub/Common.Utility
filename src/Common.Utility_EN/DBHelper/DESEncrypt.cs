@@ -34,8 +34,8 @@ namespace HD.DBHelper
 			DESCryptoServiceProvider des = new DESCryptoServiceProvider(); 
 			byte[] inputByteArray; 
 			inputByteArray=Encoding.Default.GetBytes(Text); 
-			des.Key = ASCIIEncoding.ASCII.GetBytes(System.Web.Security.FormsAuthentication.HashPasswordForStoringInConfigFile(sKey, "md5").Substring(0, 8)); 
-			des.IV = ASCIIEncoding.ASCII.GetBytes(System.Web.Security.FormsAuthentication.HashPasswordForStoringInConfigFile(sKey, "md5").Substring(0, 8)); 
+			des.Key = Encoding.ASCII.GetBytes(System.Web.Security.FormsAuthentication.HashPasswordForStoringInConfigFile(sKey, "md5").Substring(0, 8)); 
+			des.IV = Encoding.ASCII.GetBytes(System.Web.Security.FormsAuthentication.HashPasswordForStoringInConfigFile(sKey, "md5").Substring(0, 8)); 
 			System.IO.MemoryStream ms=new System.IO.MemoryStream(); 
 			CryptoStream cs=new CryptoStream(ms,des.CreateEncryptor(),CryptoStreamMode.Write); 
 			cs.Write(inputByteArray,0,inputByteArray.Length); 
@@ -80,8 +80,8 @@ namespace HD.DBHelper
 				i = Convert.ToInt32(Text.Substring(x * 2, 2), 16); 
 				inputByteArray[x]=(byte)i; 
 			} 
-			des.Key = ASCIIEncoding.ASCII.GetBytes(System.Web.Security.FormsAuthentication.HashPasswordForStoringInConfigFile(sKey, "md5").Substring(0, 8)); 
-			des.IV = ASCIIEncoding.ASCII.GetBytes(System.Web.Security.FormsAuthentication.HashPasswordForStoringInConfigFile(sKey, "md5").Substring(0, 8)); 
+			des.Key = Encoding.ASCII.GetBytes(System.Web.Security.FormsAuthentication.HashPasswordForStoringInConfigFile(sKey, "md5").Substring(0, 8)); 
+			des.IV = Encoding.ASCII.GetBytes(System.Web.Security.FormsAuthentication.HashPasswordForStoringInConfigFile(sKey, "md5").Substring(0, 8)); 
 			System.IO.MemoryStream ms=new System.IO.MemoryStream(); 
 			CryptoStream cs=new CryptoStream(ms,des.CreateDecryptor(),CryptoStreamMode.Write); 
 			cs.Write(inputByteArray,0,inputByteArray.Length); 

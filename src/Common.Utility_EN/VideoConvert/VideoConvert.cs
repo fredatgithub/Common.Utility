@@ -149,13 +149,13 @@ namespace Common.Utility
     /// <returns>³É¹¦:·µ»ØÍ¼Æ¬ÐéÄâµØÖ·;Ê§°Ü:·µ»Ø¿Õ×Ö·û´®</returns>
     public string ChangeFilePhy(string fileName, string playFile, string imgFile)
     {
-        string ffmpeg = Server.MapPath(VideoConvert.ffmpegtool);
+        string ffmpeg = Server.MapPath(ffmpegtool);
         if ((!System.IO.File.Exists(ffmpeg)) || (!System.IO.File.Exists(fileName)))
         {
             return "";
         }
         string flv_file = System.IO.Path.ChangeExtension(playFile, ".flv");
-        string FlvImgSize = VideoConvert.sizeOfImg;
+        string FlvImgSize = sizeOfImg;
         System.Diagnostics.ProcessStartInfo FilestartInfo = new System.Diagnostics.ProcessStartInfo(ffmpeg)
         {
             WindowStyle = System.Diagnostics.ProcessWindowStyle.Hidden,
@@ -175,9 +175,9 @@ namespace Common.Utility
 
     public string CatchImg(string fileName, string imgFile)
     {
-        string ffmpeg = Server.MapPath(VideoConvert.ffmpegtool);
+        string ffmpeg = Server.MapPath(ffmpegtool);
         string flv_img = imgFile + ".jpg";
-        string FlvImgSize = VideoConvert.sizeOfImg;
+        string FlvImgSize = sizeOfImg;
         System.Diagnostics.ProcessStartInfo ImgstartInfo = new System.Diagnostics.ProcessStartInfo(ffmpeg)
         {
             WindowStyle = System.Diagnostics.ProcessWindowStyle.Hidden,
@@ -209,14 +209,14 @@ namespace Common.Utility
     /// <returns>³É¹¦:·µ»ØÍ¼Æ¬ÐéÄâµØÖ·;Ê§°Ü:·µ»Ø¿Õ×Ö·û´®</returns>
     public string ChangeFileVir(string fileName, string playFile, string imgFile)
     {
-        string ffmpeg = Server.MapPath(VideoConvert.ffmpegtool);
+        string ffmpeg = Server.MapPath(ffmpegtool);
         if ((!System.IO.File.Exists(ffmpeg)) || (!System.IO.File.Exists(fileName)))
         {
             return "";
         }
         string flv_img = System.IO.Path.ChangeExtension(Server.MapPath(imgFile), ".jpg");
         string flv_file = System.IO.Path.ChangeExtension(Server.MapPath(playFile), ".flv");
-        string FlvImgSize = VideoConvert.sizeOfImg;
+        string FlvImgSize = sizeOfImg;
 
         System.Diagnostics.ProcessStartInfo ImgstartInfo = new System.Diagnostics.ProcessStartInfo(ffmpeg)
         {
@@ -254,13 +254,13 @@ namespace Common.Utility
     /// </summary>
     public string MChangeFilePhy(string vFileName, string playFile, string imgFile)
     {
-        string tool = Server.MapPath(VideoConvert.mencodertool);
+        string tool = Server.MapPath(mencodertool);
         if ((!System.IO.File.Exists(tool)) || (!System.IO.File.Exists(vFileName)))
         {
             return "";
         }
         string flv_file = System.IO.Path.ChangeExtension(playFile, ".flv");
-        string FlvImgSize = VideoConvert.sizeOfImg;
+        string FlvImgSize = sizeOfImg;
         System.Diagnostics.ProcessStartInfo FilestartInfo = new System.Diagnostics.ProcessStartInfo(tool)
         {
             WindowStyle = System.Diagnostics.ProcessWindowStyle.Hidden,

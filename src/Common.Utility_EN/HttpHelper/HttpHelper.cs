@@ -54,7 +54,7 @@ namespace Common.Utility
             StreamReader sr = null;
             HttpWebResponse response = null;
             HttpWebRequest request = null;
-            Encoding encoding = System.Text.Encoding.GetEncoding("utf-8");
+            Encoding encoding = Encoding.GetEncoding("utf-8");
             byte[] data = encoding.GetBytes(postData);
             // 准备请求...
             try
@@ -322,7 +322,7 @@ namespace Common.Utility
             else
             {
                 //读取数据时的编码方式
-                encoding = System.Text.Encoding.GetEncoding(objhttpItem.Encoding);
+                encoding = Encoding.GetEncoding(objhttpItem.Encoding);
             }
         }
         /// <summary>

@@ -71,7 +71,7 @@ namespace Utilities
                 {
                     return null;
                 }
-                return MailMessageEx.CreateMailAddress(header);
+                return CreateMailAddress(header);
             }
         }
         public string Routing
@@ -152,9 +152,9 @@ namespace Utilities
         {
             if (stripBrackets)
             {
-                return MimeEntity.TrimBrackets(base.Headers[header]);
+                return MimeEntity.TrimBrackets(Headers[header]);
             }
-            return base.Headers[header];
+            return Headers[header];
         }
         public static MailMessageEx CreateMailMessageFromEntity(MimeEntity entity)
         {
@@ -184,7 +184,7 @@ namespace Utilities
                                     {
                                         if (a == "to")
                                         {
-                                            MailMessageEx.PopulateAddressList(text2, mailMessageEx.To);
+                      PopulateAddressList(text2, mailMessageEx.To);
                                         }
                                     }
                                     else
@@ -194,22 +194,22 @@ namespace Utilities
                                 }
                                 else
                                 {
-                                    mailMessageEx.ReplyTo = MailMessageEx.CreateMailAddress(text2);
+                                    mailMessageEx.ReplyTo = CreateMailAddress(text2);
                                 }
                             }
                             else
                             {
-                                mailMessageEx.From = MailMessageEx.CreateMailAddress(text2);
+                                mailMessageEx.From = CreateMailAddress(text2);
                             }
                         }
                         else
                         {
-                            MailMessageEx.PopulateAddressList(text2, mailMessageEx.CC);
+              PopulateAddressList(text2, mailMessageEx.CC);
                         }
                     }
                     else
                     {
-                        MailMessageEx.PopulateAddressList(text2, mailMessageEx.Bcc);
+            PopulateAddressList(text2, mailMessageEx.Bcc);
                     }
                 }
             }
@@ -233,7 +233,7 @@ namespace Utilities
         }
         public static void PopulateAddressList(string addressList, MailAddressCollection recipients)
         {
-            foreach (MailAddress current in MailMessageEx.GetMailAddresses(addressList))
+            foreach (MailAddress current in GetMailAddresses(addressList))
             {
                 recipients.Add(current);
             }
@@ -243,7 +243,7 @@ namespace Utilities
             Regex regex = new Regex("(['\"]{1,}.+['\"]{1,}\\s+)?<?[\\w\\.\\-]+@[^\\.][\\w\\.\\-]+\\.[a-z]{2,}>?");
             foreach (Match match in regex.Matches(addressList))
             {
-                yield return MailMessageEx.CreateMailAddress(match.Value);
+                yield return CreateMailAddress(match.Value);
             }
             yield break;
         }

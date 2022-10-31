@@ -59,7 +59,7 @@ namespace Utilities_Xofly
         /// <param name="filePath">附件的绝对路径</param>
         public void Add(string filePath)
         {
-            if (System.IO.File.Exists(filePath))
+            if (File.Exists(filePath))
             {
                 if (_Attachments.Count < MaxAttachmentNum)
                 {
@@ -335,11 +335,11 @@ namespace Utilities_Xofly
         /// <param name="FilePath">附件的绝对路径</param>
         private string GetStream(string FilePath)
         {
-            System.IO.FileStream FileStr = new System.IO.FileStream(FilePath, System.IO.FileMode.Open);
-            byte[] by = new byte[System.Convert.ToInt32(FileStr.Length)];
+            System.IO.FileStream FileStr = new System.IO.FileStream(FilePath, FileMode.Open);
+            byte[] by = new byte[Convert.ToInt32(FileStr.Length)];
             FileStr.Read(by, 0, by.Length);
             FileStr.Close();
-            return (System.Convert.ToBase64String(by));
+            return (Convert.ToBase64String(by));
         }
 
         /// <summary>

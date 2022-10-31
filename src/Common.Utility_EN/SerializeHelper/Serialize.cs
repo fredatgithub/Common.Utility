@@ -21,8 +21,8 @@ namespace Utilities
             try
             {
                 string filename = objname + ".Binary";
-                if(System.IO.File.Exists(filename))
-                    System.IO.File.Delete(filename);
+                if(File.Exists(filename))
+          File.Delete(filename);
                 using (FileStream fileStream = new FileStream(filename, FileMode.Create))
                 {
                     // 用二进制格式序列化
@@ -48,7 +48,7 @@ namespace Utilities
             //二进制格式反序列化
             object obj;
             string filename = objname + ".Binary";
-            if(!System.IO.File.Exists(filename))
+            if(!File.Exists(filename))
                 throw new Exception("在反序列化之前,请先序列化");
             using (Stream stream = new FileStream(filename, FileMode.Open, FileAccess.Read, FileShare.Read))
             {
@@ -74,8 +74,8 @@ namespace Utilities
             try
             {  
                 string filename=objname+".Soap";
-                if(System.IO.File.Exists(filename))
-                    System.IO.File.Delete(filename);
+                if(File.Exists(filename))
+          File.Delete(filename);
                 using (FileStream fileStream = new FileStream(filename, FileMode.Create))
                 {
                     // 序列化为Soap
@@ -101,7 +101,7 @@ namespace Utilities
             object obj;
             System.Runtime.Serialization.IFormatter formatter = new SoapFormatter();
             string filename=objname+".Soap";
-            if (!System.IO.File.Exists(filename))
+            if (!File.Exists(filename))
                 throw new Exception("对反序列化之前,请先序列化");
             //Soap格式反序列化
             using (Stream stream = new FileStream(filename, FileMode.Open, FileAccess.Read, FileShare.Read))
@@ -118,8 +118,8 @@ namespace Utilities
             try
             {
                 string filename=objname+".xml";
-                if(System.IO.File.Exists(filename))
-                    System.IO.File.Delete(filename);
+                if(File.Exists(filename))
+          File.Delete(filename);
                 using (FileStream fileStream = new FileStream(filename, FileMode.Create))
                 {
                     // 序列化为xml
@@ -146,7 +146,7 @@ namespace Utilities
            // System.Runtime.Serialization.IFormatter formatter = new XmlSerializer(typeof(Car));
             string filename=objname+".xml";
             object obj;
-            if (!System.IO.File.Exists(filename))
+            if (!File.Exists(filename))
                 throw new Exception("对反序列化之前,请先序列化");
             //Xml格式反序列化
             using (Stream stream = new FileStream(filename, FileMode.Open, FileAccess.Read, FileShare.Read))

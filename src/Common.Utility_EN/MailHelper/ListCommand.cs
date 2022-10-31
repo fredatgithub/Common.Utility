@@ -34,7 +34,7 @@ namespace Utilities
 
             _messageId = messageId;
 
-            base.IsMultiline = false;
+      IsMultiline = false;
         }
 
         /// <summary>

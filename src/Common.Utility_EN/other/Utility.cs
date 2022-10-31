@@ -695,14 +695,14 @@ namespace Utilities
                                                                                                       //查找表中的数据的ID是否与compareString相等，相等返回 false;不相等继续迭代。
             for (int index = 0; index < view.Count; index++)
             {
-                if (Utility.ToObjectString(view[index][columnName]).ToLower() == compareString.Trim().ToLower())
+                if (ToObjectString(view[index][columnName]).ToLower() == compareString.Trim().ToLower())
                 {
                     array.Add("1");
                     break;
                 }
                 else
                 {
-                    SearchChild(array, table, columnName, parentColumnName, Utility.ToObjectString(view[index][columnName]), compareString);
+                    SearchChild(array, table, columnName, parentColumnName, ToObjectString(view[index][columnName]), compareString);
                 }
             }
         }
@@ -739,7 +739,7 @@ namespace Utilities
                 {
                     i++;
                 }
-                return Utility.ToInt(i);
+                return ToInt(i);
             }
             catch
             {
@@ -766,7 +766,7 @@ namespace Utilities
                 {
                     i++;
                 }
-                return Utility.ToInt(i);
+                return ToInt(i);
             }
             catch
             {

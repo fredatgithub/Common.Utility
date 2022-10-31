@@ -492,7 +492,7 @@ namespace UserDLL
                 //This enables the new user.
 
                 user.Properties["userAccountControl"].Value = //0x200; //ADS_UF_NORMAL_ACCOUNT
-                     ADHelper.ADS_USER_FLAG_ENUM.ADS_UF_NORMAL_ACCOUNT | ADHelper.ADS_USER_FLAG_ENUM.ADS_UF_DONT_EXPIRE_PASSWD;
+                     ADS_USER_FLAG_ENUM.ADS_UF_NORMAL_ACCOUNT | ADS_USER_FLAG_ENUM.ADS_UF_DONT_EXPIRE_PASSWD;
                 user.CommitChanges();
                 if (CreateMail)
                 {
@@ -552,7 +552,7 @@ namespace UserDLL
         {
           
             de.Properties["userAccountControl"][0] =
-                ADHelper.ADS_USER_FLAG_ENUM.ADS_UF_NORMAL_ACCOUNT | ADHelper.ADS_USER_FLAG_ENUM.ADS_UF_DONT_EXPIRE_PASSWD;
+                ADS_USER_FLAG_ENUM.ADS_UF_NORMAL_ACCOUNT | ADS_USER_FLAG_ENUM.ADS_UF_DONT_EXPIRE_PASSWD;
             de.CommitChanges();
             de.Close();
         }
@@ -574,7 +574,7 @@ namespace UserDLL
         {
             //impersonate.BeginImpersonate();
             de.Properties["userAccountControl"][0] =
-                ADHelper.ADS_USER_FLAG_ENUM.ADS_UF_NORMAL_ACCOUNT | ADHelper.ADS_USER_FLAG_ENUM.ADS_UF_DONT_EXPIRE_PASSWD | ADHelper.ADS_USER_FLAG_ENUM.ADS_UF_ACCOUNTDISABLE;
+                ADS_USER_FLAG_ENUM.ADS_UF_NORMAL_ACCOUNT | ADS_USER_FLAG_ENUM.ADS_UF_DONT_EXPIRE_PASSWD | ADS_USER_FLAG_ENUM.ADS_UF_ACCOUNTDISABLE;
             de.CommitChanges();
             //impersonate.StopImpersonate();
             de.Close();

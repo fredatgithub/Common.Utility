@@ -207,7 +207,7 @@ namespace Utilities
             if (iTotalSecontds <= System.Int32.MinValue)
                 maxValue = System.Int32.MinValue + 1;
 
-            int i = random.Next(System.Math.Abs(maxValue));
+            int i = random.Next(Math.Abs(maxValue));
 
             return minTime.AddSeconds(i);
         }
@@ -330,7 +330,7 @@ namespace Utilities
         public static double GetYearsOfTwoDate(DateTime? startDate, DateTime? endDate)
         {
             if (startDate == null || endDate == null) return 0;
-            int months = DateTimeUtility.GetMonthsOfTwoDate(startDate, endDate);
+            int months = GetMonthsOfTwoDate(startDate, endDate);
 
 
             double totalyears = months / 12d;

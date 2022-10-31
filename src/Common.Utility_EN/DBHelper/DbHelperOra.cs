@@ -39,7 +39,7 @@ namespace HD.DBHelper
         {
             object obj = GetSingle(strSql);
             int cmdresult;
-            if ((Object.Equals(obj, null)) || (Object.Equals(obj, System.DBNull.Value)))
+            if ((Equals(obj, null)) || (Equals(obj, DBNull.Value)))
             {
                 cmdresult = 0;
             }
@@ -61,7 +61,7 @@ namespace HD.DBHelper
         {
             object obj = GetSingle(strSql, cmdParms);
             int cmdresult;
-            if ((Object.Equals(obj, null)) || (Object.Equals(obj, System.DBNull.Value)))
+            if ((Equals(obj, null)) || (Equals(obj, DBNull.Value)))
             {
                 cmdresult = 0;
             }
@@ -221,7 +221,7 @@ namespace HD.DBHelper
 					{
 						connection.Open();
 						object obj = cmd.ExecuteScalar();
-						if((Object.Equals(obj,null))||(Object.Equals(obj,System.DBNull.Value)))
+						if((Equals(obj,null))||(Equals(obj, DBNull.Value)))
 						{					
 							return null;
 						}
@@ -367,7 +367,7 @@ namespace HD.DBHelper
 						PrepareCommand(cmd, connection, null,SQLString, cmdParms);
 						object obj = cmd.ExecuteScalar();
 						cmd.Parameters.Clear();
-						if((Object.Equals(obj,null))||(Object.Equals(obj,System.DBNull.Value)))
+						if((Equals(obj,null))||(Equals(obj, DBNull.Value)))
 						{					
 							return null;
 						}

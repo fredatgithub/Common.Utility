@@ -22,31 +22,31 @@ namespace Utilities
         /// <summary>
         /// 农历年(支干)
         /// </summary>
-        public string cnStrYear = "";
+        public string cnStrYear = string.Empty;
         /// <summary>
         /// 农历月份(字符)
         /// </summary>
-        public string cnStrMonth = "";
+        public string cnStrMonth = string.Empty;
         /// <summary>
         /// 农历天(字符)
         /// </summary>
-        public string cnStrDay = "";
+        public string cnStrDay = string.Empty;
         /// <summary>
         /// 农历属象
         /// </summary>
-        public string cnAnm = "";
+        public string cnAnm = string.Empty;
         /// <summary>
         /// 二十四节气
         /// </summary>
-        public string cnSolarTerm = "";
+        public string cnSolarTerm = string.Empty;
         /// <summary>
         /// 阴历节日
         /// </summary>
-        public string cnFtvl = "";
+        public string cnFtvl = string.Empty;
         /// <summary>
         /// 阳历节日
         /// </summary>
-        public string cnFtvs = "";
+        public string cnFtvs = string.Empty;
     }
 
     /// <summary>
@@ -417,7 +417,7 @@ namespace Utilities
 
         private static String getChinaDate(int day)
         {
-            String a = "";
+            String a = string.Empty;
             if (day == 10)
                 return "初十";
             if (day == 20)
@@ -862,7 +862,7 @@ namespace Utilities
             temp = 0;
 
             //计算两天的基本差距
-            TimeSpan ts = _date - ChineseCalendar.MinDay;
+            TimeSpan ts = _date - MinDay;
             offset = ts.Days;
 
             for (i = MinYear; i <= MaxYear; i++)
@@ -1313,7 +1313,7 @@ namespace Utilities
         {
             get
             {
-                string tempStr = "";
+                string tempStr = string.Empty;
                 if (this._cIsLeapMonth == false) //闰月不计算节日
                 {
                     foreach (LunarHolidayStruct lh in lHolidayInfo)
@@ -1350,7 +1350,7 @@ namespace Utilities
         {
             get
             {
-                string tempStr = "";
+                string tempStr = string.Empty;
                 foreach (WeekHolidayStruct wh in wHolidayInfo)
                 {
                     if (CompareWeekDayHoliday(_date, wh.Month, wh.WeekAtMonth, wh.WeekDay))
@@ -1372,7 +1372,7 @@ namespace Utilities
         {
             get
             {
-                string tempStr = "";
+                string tempStr = string.Empty;
 
                 foreach (SolarHolidayStruct sh in sHolidayInfo)
                 {
@@ -1600,7 +1600,7 @@ namespace Utilities
         {
             get
             {
-                string tempStr = "";
+                string tempStr = string.Empty;
                 string num = this._cYear.ToString();
                 for (int i = 0; i < 4; i++)
                 {
@@ -1651,7 +1651,7 @@ namespace Utilities
                 DateTime newDate;
                 double num;
                 int y;
-                string tempStr = "";
+                string tempStr = string.Empty;
 
                 y = this._date.Year;
 
@@ -1679,7 +1679,7 @@ namespace Utilities
                 DateTime newDate;
                 double num;
                 int y;
-                string tempStr = "";
+                string tempStr = string.Empty;
 
                 y = this._date.Year;
 
@@ -1710,7 +1710,7 @@ namespace Utilities
                 DateTime newDate;
                 double num;
                 int y;
-                string tempStr = "";
+                string tempStr = string.Empty;
 
                 y = this._date.Year;
 

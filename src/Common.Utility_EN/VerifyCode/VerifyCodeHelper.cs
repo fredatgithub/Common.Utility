@@ -20,10 +20,10 @@ namespace HD.Helper.Common
         private static RNGCryptoServiceProvider rand = new RNGCryptoServiceProvider();
         private Font[] fonts = 
     {
-       new Font(new FontFamily("Times New Roman"),10 +Next(1),System.Drawing.FontStyle.Regular),
-       new Font(new FontFamily("Georgia"), 10 + Next(1),System.Drawing.FontStyle.Regular),
-       new Font(new FontFamily("Arial"), 10 + Next(1),System.Drawing.FontStyle.Regular),
-       new Font(new FontFamily("Comic Sans MS"), 10 + Next(1),System.Drawing.FontStyle.Regular)
+       new Font(new FontFamily("Times New Roman"),10 +Next(1),FontStyle.Regular),
+       new Font(new FontFamily("Georgia"), 10 + Next(1),FontStyle.Regular),
+       new Font(new FontFamily("Arial"), 10 + Next(1),FontStyle.Regular),
+       new Font(new FontFamily("Comic Sans MS"), 10 + Next(1),FontStyle.Regular)
     };
         #endregion
 

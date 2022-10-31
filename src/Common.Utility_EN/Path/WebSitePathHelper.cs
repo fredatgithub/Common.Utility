@@ -82,7 +82,7 @@ namespace HD.Helper.Common
         /// <returns></returns>
         public static string GetWebPath()
         {
-            string path = System.Web.HttpContext.Current.Request.ApplicationPath;
+            string path = HttpContext.Current.Request.ApplicationPath;
             string thisPath;
             //如果不是根目录就加上"/" 根目录自己会加"/"
             if (path != "/")
@@ -111,7 +111,7 @@ namespace HD.Helper.Common
             }
             else
             {
-                return System.Web.HttpContext.Current.Server.MapPath(localPath);
+                return HttpContext.Current.Server.MapPath(localPath);
             }
         }
         #endregion

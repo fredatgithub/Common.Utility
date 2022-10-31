@@ -36,7 +36,7 @@ namespace Common.Utility
         /// </summary>
         private string GetImgUrl(string imgTagStr)
         {
-            string str = "";
+            string str = string.Empty;
             Regex regObj = new Regex("http://.+.(?:jpg|gif|bmp|png)", RegexOptions.Compiled | RegexOptions.IgnoreCase);
             foreach (Match matchItem in regObj.Matches(imgTagStr))
             {
@@ -65,7 +65,7 @@ namespace Common.Utility
             {
                 for (int i = 0; i < imgurlAry.Length; i++)
                 {
-                    string preStr = System.DateTime.Now.ToString() + "_";
+                    string preStr = DateTime.Now.ToString() + "_";
                     preStr = preStr.Replace("-", "");
                     preStr = preStr.Replace(":", "");
                     preStr = preStr.Replace(" ", "");

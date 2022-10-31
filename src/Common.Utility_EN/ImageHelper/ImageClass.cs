@@ -24,7 +24,7 @@ namespace Common.Utility
         /// <param name="mode">生成缩略图的方式</param>    
         public static void MakeThumbnail(string originalImagePath, string thumbnailPath, int width, int height, string mode)
         {
-            System.Drawing.Image originalImage = System.Drawing.Image.FromFile(originalImagePath);
+            System.Drawing.Image originalImage = Image.FromFile(originalImagePath);
 
             int towidth = width;
             int toheight = height;
@@ -68,24 +68,24 @@ namespace Common.Utility
             System.Drawing.Image bitmap = new System.Drawing.Bitmap(towidth, toheight);
 
             //新建一个画板
-            System.Drawing.Graphics g = System.Drawing.Graphics.FromImage(bitmap);
+            System.Drawing.Graphics g = Graphics.FromImage(bitmap);
 
             //设置高质量插值法
-            g.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.High;
+            g.InterpolationMode = InterpolationMode.High;
 
             //设置高质量,低速度呈现平滑程度
-            g.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
+            g.SmoothingMode = SmoothingMode.HighQuality;
 
             //清空画布并以透明背景色填充
-            g.Clear(System.Drawing.Color.Transparent);
+            g.Clear(Color.Transparent);
 
             //在指定位置并且按指定大小绘制原图片的指定部分
-            g.DrawImage(originalImage, new System.Drawing.Rectangle(0, 0, towidth, toheight), new System.Drawing.Rectangle(x, y, ow, oh), System.Drawing.GraphicsUnit.Pixel);
+            g.DrawImage(originalImage, new System.Drawing.Rectangle(0, 0, towidth, toheight), new System.Drawing.Rectangle(x, y, ow, oh), GraphicsUnit.Pixel);
 
             try
             {
                 //以jpg格式保存缩略图
-                bitmap.Save(thumbnailPath, System.Drawing.Imaging.ImageFormat.Jpeg);
+                bitmap.Save(thumbnailPath, ImageFormat.Jpeg);
             }
             catch (System.Exception e)
             {
@@ -114,7 +114,7 @@ namespace Common.Utility
             {
                 DateTime time = DateTime.Now;
                 string filename = "" + time.Year.ToString() + time.Month.ToString() + time.Day.ToString() + time.Hour.ToString() + time.Minute.ToString() + time.Second.ToString() + time.Millisecond.ToString();
-                Image img = Bitmap.FromFile(path);
+                Image img = Image.FromFile(path);
                 Image waterimg = Image.FromFile(waterpath);
                 Graphics g = Graphics.FromImage(img);
                 ArrayList loca = GetLocation(location, img, waterimg);
@@ -214,7 +214,7 @@ namespace Common.Utility
             {
                 DateTime time = DateTime.Now;
                 string filename = "" + time.Year.ToString() + time.Month.ToString() + time.Day.ToString() + time.Hour.ToString() + time.Minute.ToString() + time.Second.ToString() + time.Millisecond.ToString();
-                Image img = Bitmap.FromFile(path);
+                Image img = Image.FromFile(path);
                 Graphics gs = Graphics.FromImage(img);
                 ArrayList loca = GetLocation(location, img, size, letter.Length);
                 Font font = new Font("宋体", size);
@@ -403,7 +403,7 @@ namespace Common.Utility
             {
                 Bitmap bap = new Bitmap(newW, newH);
                 Graphics g = Graphics.FromImage(bap);
-                g.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
+                g.InterpolationMode = InterpolationMode.HighQualityBicubic;
                 g.DrawImage(bap, new Rectangle(0, 0, newW, newH), new Rectangle(0, 0, bap.Width, bap.Height), GraphicsUnit.Pixel);
                 g.Dispose();
                 return bap;
@@ -498,7 +498,7 @@ namespace Common.Utility
         {
             try
             {
-                System.Drawing.Image img = System.Drawing.Image.FromFile(oldfile);
+                System.Drawing.Image img = Image.FromFile(oldfile);
                 System.Drawing.Imaging.ImageFormat thisFormat = img.RawFormat;
                 Size newSize = new Size(100, 125);
                 Bitmap outBmp = new Bitmap(newSize.Width, newSize.Height);
@@ -511,7 +511,7 @@ namespace Common.Utility
                 EncoderParameters encoderParams = new EncoderParameters();
                 long[] quality = new long[1];
                 quality[0] = 100;
-                EncoderParameter encoderParam = new EncoderParameter(System.Drawing.Imaging.Encoder.Quality, quality);
+                EncoderParameter encoderParam = new EncoderParameter(Encoder.Quality, quality);
                 encoderParams.Param[0] = encoderParam;
                 ImageCodecInfo[] arrayICI = ImageCodecInfo.GetImageEncoders();
                 ImageCodecInfo jpegICI = null;
@@ -522,7 +522,7 @@ namespace Common.Utility
                         break;
                     }
                 img.Dispose();
-                if (jpegICI != null) outBmp.Save(newfile, System.Drawing.Imaging.ImageFormat.Jpeg);
+                if (jpegICI != null) outBmp.Save(newfile, ImageFormat.Jpeg);
                 outBmp.Dispose();
                 return true;
             }

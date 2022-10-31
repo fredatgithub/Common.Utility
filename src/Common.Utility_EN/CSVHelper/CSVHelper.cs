@@ -126,13 +126,13 @@ namespace DotNet.Utilities.CSVHelper
         {
             try
             {
-                string strBufferLine = "";
-                StreamWriter strmWriterObj = new StreamWriter(strFilePath, false, System.Text.Encoding.UTF8);
+                string strBufferLine = string.Empty;
+                StreamWriter strmWriterObj = new StreamWriter(strFilePath, false, Encoding.UTF8);
                 strmWriterObj.WriteLine(tableheader);
                 strmWriterObj.WriteLine(columname);
                 for (int i = 0; i < dt.Rows.Count; i++)
                 {
-                    strBufferLine = "";
+                    strBufferLine = string.Empty;
                     for (int j = 0; j < dt.Columns.Count; j++)
                     {
                         if (j > 0)
@@ -157,7 +157,7 @@ namespace DotNet.Utilities.CSVHelper
         /// <param name="n">表示第n行是字段title,第n+1行是记录开始</param>
         public static DataTable csv2dt(string filePath, int n, DataTable dt)
         {
-            StreamReader reader = new StreamReader(filePath, System.Text.Encoding.UTF8, false);
+            StreamReader reader = new StreamReader(filePath, Encoding.UTF8, false);
             int i = 0, m = 0;
             reader.Peek();
             while (reader.Peek() > 0)

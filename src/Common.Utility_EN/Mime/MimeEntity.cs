@@ -274,7 +274,7 @@ namespace Maticsoft.Common.Mime
                     }
                     else
                     {
-                        if (!MimeEntity.IsAttachment(current) && (string.Equals(current.ContentType.MediaType, MediaTypes.TextPlain) || string.Equals(current.ContentType.MediaType, MediaTypes.TextHtml)))
+                        if (!IsAttachment(current) && (string.Equals(current.ContentType.MediaType, MediaTypes.TextPlain) || string.Equals(current.ContentType.MediaType, MediaTypes.TextHtml)))
                         {
                             message.AlternateViews.Add(this.CreateAlternateView(current));
                             this.SetMessageBody(message, current);
@@ -287,7 +287,7 @@ namespace Maticsoft.Common.Mime
                             }
                             else
                             {
-                                if (MimeEntity.IsAttachment(current))
+                                if (IsAttachment(current))
                                 {
                                     message.Attachments.Add(this.CreateAttachment(current));
                                 }
@@ -325,7 +325,7 @@ namespace Maticsoft.Common.Mime
             return new AlternateView(view.Content, view.ContentType)
             {
                 TransferEncoding = view.ContentTransferEncoding,
-                ContentId = MimeEntity.TrimBrackets(view.ContentId)
+                ContentId = TrimBrackets(view.ContentId)
             };
         }
         public static string TrimBrackets(string value)
@@ -364,7 +364,7 @@ namespace Maticsoft.Common.Mime
             }
             if (!string.IsNullOrEmpty(entity.ContentId))
             {
-                attachment.ContentId = MimeEntity.TrimBrackets(entity.ContentId);
+                attachment.ContentId = TrimBrackets(entity.ContentId);
             }
             attachment.TransferEncoding = entity.ContentTransferEncoding;
             return attachment;

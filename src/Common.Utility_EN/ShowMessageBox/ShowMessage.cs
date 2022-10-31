@@ -221,7 +221,7 @@ namespace Utilities
 
             // NDGridViewScriptFirst(page.Form.Controls, page);
 
-            page.ClientScript.RegisterStartupScript(page.GetType(), System.Guid.NewGuid().ToString(), script, true);
+            page.ClientScript.RegisterStartupScript(page.GetType(), Guid.NewGuid().ToString(), script, true);
 
         }
 

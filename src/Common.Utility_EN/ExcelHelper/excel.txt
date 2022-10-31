@@ -35,8 +35,8 @@ using Aspose.Cells;
 ///</summary>
 publicclassAsposeExcel
 {
-privatestring outFileName = "";
-privatestring fullFilename = "";
+privatestring outFileName = string.Empty;
+privatestring fullFilename = string.Empty;
 privateWorkbook book = null;
 privateWorksheet sheet = null;
 publicAsposeExcel(string outfilename, string tempfilename)//导出构造数
