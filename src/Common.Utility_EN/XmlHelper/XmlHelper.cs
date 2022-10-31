@@ -195,7 +195,7 @@ namespace Common.Utility
     /// <param name="xmlFilePath">Xml文件的相对路径</param>        
     private static XmlElement CreateRootElement(string xmlFilePath)
     {
-      //定义变量，表示XML文件的绝对路径
+      //Define a variable that represents the absolute path of the XML file
       string filePath = string.Empty;
 
       //获取XML文件的绝对路径
